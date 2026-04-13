@@ -27,8 +27,7 @@ export const signup = async (req, res) => {
             password: hashedPassword,
         });
         if (newUser){
-            //generateToken(newUser._id, res);
-            //await newUser.save();
+            
 
             //Persist the user to the database and generate token after successful save
             const savedUser = await newUser.save();
