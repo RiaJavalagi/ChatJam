@@ -6,16 +6,19 @@ import messageRoutes from "./routes/message.routes.js";
 import path from "path";
 import connectDB from "./lib/db.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+app.use(cors({origin: express.env.CLIENT_URL, credentials: true}));
 const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 3000;
 
 app.use(cookieParser());
 app.use(express.json()); // req.body
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
