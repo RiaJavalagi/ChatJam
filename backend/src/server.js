@@ -18,7 +18,7 @@ const __dirname = path.resolve();
 const PORT = process.env.PORT || 3000;
 
 app.use(cookieParser());
-app.use(express.json()); // req.body
+app.use(express.json({limit: "5mb"})); // req.body
 
 
 app.use("/api/auth", authRoutes);
