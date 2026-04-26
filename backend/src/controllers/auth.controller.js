@@ -81,7 +81,12 @@ export const login = async (req,res) => {
     }
 };
 export const logout = (_,res) => {
-    res.cookie("jwt", "",{maxAge: 0});
+    res.cookie("jwt", "", {
+  maxAge: 0,
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",  // must match exactly what generateToken sets
+});
     res.status(200).json({message: "Logged out successfully"});
 
 };
