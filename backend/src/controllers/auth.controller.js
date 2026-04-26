@@ -85,7 +85,7 @@ export const logout = (_,res) => {
   maxAge: 0,
   httpOnly: true,
   secure: true,
-  sameSite: "none",  // must match exactly what generateToken sets
+  sameSite: process.env.NODE_ENV === "development" ? false : true,  // must match exactly what generateToken sets
 });
     res.status(200).json({message: "Logged out successfully"});
 
